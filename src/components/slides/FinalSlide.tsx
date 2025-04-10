@@ -1,8 +1,9 @@
-import { Typography, Button } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Box, Typography, Button } from '@mui/material';
+import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import ReplayIcon from '@mui/icons-material/Replay';
+import { useEffect } from 'react';
 
 const SlideContainer = styled(motion.div)({
   height: '100vh',
@@ -15,6 +16,8 @@ const SlideContainer = styled(motion.div)({
   color: '#FFFFFF',
   padding: '2rem',
   textAlign: 'center',
+  position: 'relative',
+  overflow: 'hidden',
 });
 
 const GradientText = styled(Typography)({
@@ -23,36 +26,121 @@ const GradientText = styled(Typography)({
   WebkitBackgroundClip: 'text',
   color: 'transparent',
   fontWeight: 'bold',
+  position: 'relative',
+  zIndex: 1,
 });
 
-const StyledButton = styled(Button)({
+const StyledButton = styled(motion(Button))({
   marginTop: '2rem',
   color: '#FFFFFF',
   borderColor: '#1DB954',
+  position: 'relative',
+  overflow: 'hidden',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'linear-gradient(45deg, transparent, rgba(29, 185, 84, 0.1), transparent)',
+    transform: 'translateX(-100%)',
+    transition: 'transform 0.6s ease',
+  },
   '&:hover': {
     borderColor: '#1ED760',
     backgroundColor: 'rgba(29, 185, 84, 0.1)',
+    '&::before': {
+      transform: 'translateX(100%)',
+    }
   },
 });
 
 const FinalSlide = () => {
   const navigate = useNavigate();
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start({
+      scale: [1, 1.02, 1],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut"
+      }
+    });
+  }, [controls]);
 
   const containerVariants = {
     initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
+    animate: { 
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    },
+    exit: { 
+      opacity: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeIn"
+      }
+    }
   };
 
   const textVariants = {
-    initial: { y: 50, opacity: 0 },
+    initial: { 
+      y: 50, 
+      opacity: 0,
+      scale: 0.9,
+      rotate: -5
+    },
     animate: (i: number) => ({
       y: 0,
       opacity: 1,
+      scale: 1,
+      rotate: 0,
       transition: {
         delay: i * 0.3,
-      },
-    }),
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    })
+  };
+
+  const buttonVariants = {
+    initial: { 
+      scale: 0.8, 
+      opacity: 0,
+      y: 20,
+      rotate: -5
+    },
+    animate: { 
+      scale: 1,
+      opacity: 1,
+      y: 0,
+      rotate: 0,
+      transition: {
+        delay: 1.5,
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    },
+    hover: {
+      scale: 1.05,
+      rotate: 2,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    }
   };
 
   return (
@@ -62,40 +150,62 @@ const FinalSlide = () => {
       animate="animate"
       exit="exit"
     >
-      <motion.div custom={0} variants={textVariants} initial="initial" animate="animate">
+      <motion.div 
+        custom={0} 
+        variants={textVariants} 
+        initial="initial" 
+        animate="animate"
+      >
         <GradientText variant="h2" sx={{ mb: 3 }}>
           That's a Wrap!
         </GradientText>
       </motion.div>
 
-      <motion.div custom={1} variants={textVariants} initial="initial" animate="animate">
+      <motion.div 
+        custom={1} 
+        variants={textVariants} 
+        initial="initial" 
+        animate="animate"
+      >
         <Typography variant="h5" sx={{ mb: 2, opacity: 0.9 }}>
           You've had an amazing year in music
         </Typography>
       </motion.div>
 
-      <motion.div custom={2} variants={textVariants} initial="initial" animate="animate">
+      <motion.div 
+        custom={2} 
+        variants={textVariants} 
+        initial="initial" 
+        animate="animate"
+      >
         <Typography variant="body1" sx={{ mb: 4, opacity: 0.7 }}>
           From discovering 156 new songs to spending 1,234 minutes with your favorite artists,
           you've created a unique musical journey.
         </Typography>
       </motion.div>
 
-      <motion.div custom={3} variants={textVariants} initial="initial" animate="animate">
+      <motion.div 
+        custom={3} 
+        variants={textVariants} 
+        initial="initial" 
+        animate="animate"
+      >
         <Typography variant="h6" sx={{ color: '#1DB954', mb: 3 }}>
           Thanks for being part of the music!
         </Typography>
       </motion.div>
 
-      <motion.div custom={4} variants={textVariants} initial="initial" animate="animate">
-        <StyledButton
-          variant="outlined"
-          startIcon={<ReplayIcon />}
-          onClick={() => navigate('/')}
-        >
-          Start Over
-        </StyledButton>
-      </motion.div>
+      <StyledButton
+        variants={buttonVariants}
+        initial="initial"
+        animate="animate"
+        whileHover="hover"
+        variant="outlined"
+        startIcon={<ReplayIcon />}
+        onClick={() => navigate('/')}
+      >
+        Start Over
+      </StyledButton>
     </SlideContainer>
   );
 };
