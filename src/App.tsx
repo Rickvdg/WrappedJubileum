@@ -9,14 +9,31 @@ import FinalSlide from './components/slides/FinalSlide';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1DB954', // Spotify green
+      main: '#FF69B4', // Light pink
+      light: '#FFB6C1', // Lighter pink
+      dark: '#FF1493', // Darker pink
     },
     background: {
-      default: '#191414', // Spotify black
+      default: '#FFF5F7', // Very light pink background
+      paper: '#FFFFFF', // White for cards
+    },
+    text: {
+      primary: '#2C3E50', // Dark text for contrast
+      secondary: '#FF69B4', // Pink for accents
     },
   },
   typography: {
     fontFamily: '"Gotham", "Helvetica", "Arial", sans-serif',
+  },
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(10px)',
+        },
+      },
+    },
   },
 });
 

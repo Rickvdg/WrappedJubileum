@@ -12,8 +12,8 @@ const SlideContainer = styled(motion.div)({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: '#191414',
-  color: '#FFFFFF',
+  backgroundColor: '#FFF5F7',
+  color: '#2C3E50',
   padding: '2rem',
   textAlign: 'center',
   position: 'relative',
@@ -21,7 +21,7 @@ const SlideContainer = styled(motion.div)({
 });
 
 const GradientText = styled(Typography)({
-  background: 'linear-gradient(45deg, #1DB954, #4CAF50)',
+  background: 'linear-gradient(45deg, #FF69B4, #FFB6C1)',
   backgroundClip: 'text',
   WebkitBackgroundClip: 'text',
   color: 'transparent',
@@ -32,8 +32,8 @@ const GradientText = styled(Typography)({
 
 const StyledButton = styled(motion(Button))({
   marginTop: '2rem',
-  color: '#FFFFFF',
-  borderColor: '#1DB954',
+  color: '#2C3E50',
+  borderColor: '#FF69B4',
   position: 'relative',
   overflow: 'hidden',
   '&::before': {
@@ -43,13 +43,13 @@ const StyledButton = styled(motion(Button))({
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(45deg, transparent, rgba(29, 185, 84, 0.1), transparent)',
+    background: 'linear-gradient(45deg, transparent, rgba(255, 105, 180, 0.1), transparent)',
     transform: 'translateX(-100%)',
     transition: 'transform 0.6s ease',
   },
   '&:hover': {
-    borderColor: '#1ED760',
-    backgroundColor: 'rgba(29, 185, 84, 0.1)',
+    borderColor: '#FFB6C1',
+    backgroundColor: 'rgba(255, 105, 180, 0.1)',
     '&::before': {
       transform: 'translateX(100%)',
     }
@@ -190,7 +190,7 @@ const FinalSlide = () => {
         initial="initial" 
         animate="animate"
       >
-        <Typography variant="h6" sx={{ color: '#1DB954', mb: 3 }}>
+        <Typography variant="h6" sx={{ color: '#FF69B4', mb: 3 }}>
           Thanks for being part of the music!
         </Typography>
       </motion.div>

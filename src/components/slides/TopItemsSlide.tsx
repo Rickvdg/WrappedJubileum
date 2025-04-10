@@ -10,8 +10,8 @@ const SlideContainer = styled(motion.div)({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  backgroundColor: '#191414',
-  color: '#FFFFFF',
+  backgroundColor: '#FFF5F7',
+  color: '#2C3E50',
   padding: '2rem',
   cursor: 'pointer',
   position: 'relative',
@@ -22,12 +22,12 @@ const ItemCard = styled(motion(Card))({
   width: '100%',
   maxWidth: '500px',
   marginBottom: '1rem',
-  backgroundColor: 'rgba(29, 185, 84, 0.1)',
+  backgroundColor: 'rgba(255, 255, 255, 0.9)',
   backdropFilter: 'blur(10px)',
-  color: '#FFFFFF',
+  color: '#2C3E50',
   borderRadius: '16px',
   overflow: 'hidden',
-  border: '1px solid rgba(29, 185, 84, 0.2)',
+  border: '1px solid rgba(255, 105, 180, 0.2)',
   position: 'relative',
   '&::before': {
     content: '""',
@@ -36,7 +36,7 @@ const ItemCard = styled(motion(Card))({
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(45deg, transparent, rgba(29, 185, 84, 0.1), transparent)',
+    background: 'linear-gradient(45deg, transparent, rgba(255, 105, 180, 0.1), transparent)',
     transform: 'translateX(-100%)',
     transition: 'transform 0.6s ease',
   },
@@ -153,7 +153,7 @@ const TopItemsSlide = () => {
         initial="initial"
         animate="animate"
       >
-        <Typography variant="h3" sx={{ mb: 4, color: '#1DB954', fontWeight: 'bold' }}>
+        <Typography variant="h3" sx={{ mb: 4, color: '#FF69B4', fontWeight: 'bold' }}>
           Your Top Artists
         </Typography>
       </motion.div>
@@ -175,7 +175,7 @@ const TopItemsSlide = () => {
                 <Typography variant="h6">
                   {index + 1}. {artist.name}
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#1DB954' }}>
+                <Typography variant="body1" sx={{ color: '#FF69B4' }}>
                   {artist.plays} plays
                 </Typography>
               </Box>

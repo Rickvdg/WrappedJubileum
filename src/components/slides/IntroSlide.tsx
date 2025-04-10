@@ -11,8 +11,8 @@ const SlideContainer = styled(motion.div)({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: '#191414',
-  color: '#FFFFFF',
+  backgroundColor: '#FFF5F7',
+  color: '#2C3E50',
   cursor: 'pointer',
   overflow: 'hidden',
   position: 'relative',
@@ -23,12 +23,12 @@ const Particle = styled(motion.div)({
   width: '4px',
   height: '4px',
   borderRadius: '50%',
-  backgroundColor: '#1DB954',
+  backgroundColor: '#FF69B4',
   opacity: 0.6,
 });
 
 const GradientText = styled(Typography)({
-  background: 'linear-gradient(45deg, #1DB954, #4CAF50)',
+  background: 'linear-gradient(45deg, #FF69B4, #FFB6C1)',
   backgroundClip: 'text',
   WebkitBackgroundClip: 'text',
   color: 'transparent',

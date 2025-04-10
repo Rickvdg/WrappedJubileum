@@ -11,8 +11,8 @@ const SlideContainer = styled(motion.div)({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: '#191414',
-  color: '#FFFFFF',
+  backgroundColor: '#FFF5F7',
+  color: '#2C3E50',
   cursor: 'pointer',
   padding: '2rem',
   position: 'relative',
@@ -24,9 +24,9 @@ const StatBox = styled(motion.div)({
   textAlign: 'center',
   padding: '1.5rem',
   borderRadius: '16px',
-  background: 'rgba(29, 185, 84, 0.1)',
+  background: 'rgba(255, 255, 255, 0.9)',
   backdropFilter: 'blur(10px)',
-  border: '1px solid rgba(29, 185, 84, 0.2)',
+  border: '1px solid rgba(255, 105, 180, 0.2)',
   width: '100%',
   maxWidth: '400px',
   position: 'relative',
@@ -38,7 +38,7 @@ const StatBox = styled(motion.div)({
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(45deg, transparent, rgba(29, 185, 84, 0.1), transparent)',
+    background: 'linear-gradient(45deg, transparent, rgba(255, 105, 180, 0.1), transparent)',
     transform: 'translateX(-100%)',
   }
 });
@@ -141,7 +141,7 @@ const StatsSlide = () => {
         <motion.div
           animate={controls}
         >
-          <Typography variant="h2" sx={{ color: '#1DB954', fontWeight: 'bold' }}>
+          <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
             {Math.floor(count)}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
@@ -160,7 +160,7 @@ const StatsSlide = () => {
         <motion.div
           animate={controls}
         >
-          <Typography variant="h2" sx={{ color: '#1DB954', fontWeight: 'bold' }}>
+          <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
             42
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
@@ -179,7 +179,7 @@ const StatsSlide = () => {
         <motion.div
           animate={controls}
         >
-          <Typography variant="h2" sx={{ color: '#1DB954', fontWeight: 'bold' }}>
+          <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
             156
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
