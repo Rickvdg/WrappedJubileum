@@ -4,6 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import userData from '../../data/userData.json';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const SlideContainer = styled(motion.div)({
   height: '100vh',
@@ -18,6 +19,37 @@ const SlideContainer = styled(motion.div)({
   padding: '2rem',
   position: 'relative',
   overflow: 'hidden',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'linear-gradient(0deg, rgba(255, 105, 180, 0.1), rgba(255, 182, 193, 0.1))',
+    animation: 'gradient 15s ease infinite',
+    zIndex: 0,
+  },
+  '@keyframes gradient': {
+    '0%': {
+      backgroundPosition: '0% 50%',
+    },
+    '50%': {
+      backgroundPosition: '100% 50%',
+    },
+    '100%': {
+      backgroundPosition: '0% 50%',
+    },
+  },
+});
+
+const Heart = styled(motion(FavoriteIcon))({
+  position: 'absolute',
+  color: '#FF69B4',
+  opacity: 0.3,
+  zIndex: 0,
+  fontSize: '2rem',
+  transform: 'rotate(180deg)',
 });
 
 const StatBox = styled(motion.div)({
@@ -32,6 +64,7 @@ const StatBox = styled(motion.div)({
   maxWidth: '400px',
   position: 'relative',
   overflow: 'hidden',
+  zIndex: 1,
   '&::before': {
     content: '""',
     position: 'absolute',
@@ -124,6 +157,15 @@ const StatsSlide = () => {
     }
   };
 
+  const hearts = Array.from({ length: 30 }).map((_, i) => ({
+    id: i,
+    x: Math.random() * (window.innerWidth - 100) + 50,
+    y: Math.random() * window.innerHeight,
+    scale: Math.random() * 0.8 + 0.7,
+    duration: Math.random() * 4 + 3,
+    delay: Math.random() * 2
+  }));
+
   return (
     <SlideContainer
       variants={containerVariants}
@@ -132,6 +174,30 @@ const StatsSlide = () => {
       exit="exit"
       onClick={() => navigate('/top-items')}
     >
+      {hearts.map((heart) => (
+        <Heart
+          key={heart.id}
+          initial={{ 
+            x: heart.x,
+            y: heart.y,
+            scale: 0,
+            rotate: Math.random() * 360
+          }}
+          animate={{ 
+            y: [heart.y, heart.y - 150, heart.y],
+            scale: [0, heart.scale, 0],
+            rotate: [180, 0, -180],
+            opacity: [0, 0.4, 0]
+          }}
+          transition={{
+            duration: heart.duration,
+            delay: heart.delay,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+
       <StatBox
         variants={statVariants}
         custom={0}
