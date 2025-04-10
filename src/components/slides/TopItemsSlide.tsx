@@ -111,7 +111,7 @@ const TopItemsSlide = () => {
     hover: {
       scale: 1.02,
       y: -5,
-      rotate: 2,
+      rotate: 1,
       transition: {
         type: "spring",
         stiffness: 400,
