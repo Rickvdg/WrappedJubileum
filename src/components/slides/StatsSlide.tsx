@@ -109,7 +109,7 @@ const StatsSlide = () => {
             {Math.floor(count)}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            Tiktoks Sent
+            Tiktok's verstuurd
           </Typography>
         </motion.div>
       </StatBox>
@@ -128,7 +128,7 @@ const StatsSlide = () => {
             {userData.stats.stickersSent}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            Stickers Sent
+            Hartjes verstuurd
           </Typography>
         </motion.div>
       </StatBox>
@@ -147,7 +147,7 @@ const StatsSlide = () => {
             {userData.stats.loveYousSent}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            I Love Yous Sent
+            "Ik hou van jou" verstuurd
           </Typography>
         </motion.div>
       </StatBox>

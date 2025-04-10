@@ -85,7 +85,7 @@ const IntroSlide = () => {
         animate={controls}
       >
         <GradientText variant="h1">
-          Your 2024 Wrapped
+          Your 4th Anniversary Wrapped
         </GradientText>
       </motion.div>
       <motion.div variants={subtitleVariants}>
