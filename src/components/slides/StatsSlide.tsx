@@ -95,6 +95,9 @@ const StatsSlide = () => {
 
   return (
     <BaseSlide onClick={() => navigate('/top-items')} heartCount={30}>
+      <Typography variant="h3" sx={{ mb: 4, color: '#FF69B4', fontWeight: 'bold' }}>
+        TikTok Stats
+      </Typography>
       <StatBox
         variants={statVariants}
         custom={0}
@@ -125,10 +128,10 @@ const StatsSlide = () => {
           animate={controls}
         >
           <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
-            {userData.stats.stickersSent}
+            {userData.stats.tiktoksAveragePerDay}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            Hartjes verstuurd
+            Gemiddeld aantal tiktoks per dag
           </Typography>
         </motion.div>
       </StatBox>
@@ -144,10 +147,10 @@ const StatsSlide = () => {
           animate={controls}
         >
           <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
-            {userData.stats.loveYousSent}
+            {userData.stats.tiktoksUniqueDays}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            "Ik hou van jou" verstuurd
+            Aantal unieke dagen
           </Typography>
         </motion.div>
       </StatBox>

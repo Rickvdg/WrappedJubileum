@@ -3,15 +3,16 @@
     "minutesListened": 1234,
     "differentArtists": 42,
     "newSongsDiscovered": 156,
-    "tiktoksSent": 1234,
-    "stickersSent": 42,
-    "loveYousSent": 156
+    "tiktoksSent": 1182,
+    "tiktoksAveragePerDay": 4.38,
+    "tiktoksUniqueDays": 270
   },
   "topArtists": [
-    { "name": "Artist 1", "plays": 245 },
-    { "name": "Artist 2", "plays": 198 },
-    { "name": "Artist 3", "plays": 156 },
-    { "name": "Artist 4", "plays": 134 },
-    { "name": "Artist 5", "plays": 112 }
+    { "name": "ik hou van jou(uuu)", "plays": 421 },
+    { "name": "goeiemorgen/goedemorgen", "plays": 320 },
+    { "name": "hahaha", "plays": 207 },
+    { "name": "okii", "plays": 106 },
+    { "name": "😂😂😂", "plays": 93 },
+    { "name": "ik lig", "plays": 75 }
   ]
 } 

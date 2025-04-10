@@ -97,7 +97,7 @@ const TopItemsSlide = () => {
         animate="animate"
       >
         <Typography variant="h3" sx={{ mb: 4, color: '#FF69B4', fontWeight: 'bold' }}>
-          Your Top Artists
+          Meest verstuurde berichten
         </Typography>
       </motion.div>
 
@@ -119,7 +119,7 @@ const TopItemsSlide = () => {
                   {index + 1}. {artist.name}
                 </Typography>
                 <Typography variant="body1" sx={{ color: '#FF69B4' }}>
-                  {artist.plays} plays
+                  {artist.plays} keer
                 </Typography>
               </Box>
             </motion.div>
