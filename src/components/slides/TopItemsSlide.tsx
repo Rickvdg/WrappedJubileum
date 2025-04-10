@@ -2,7 +2,6 @@ import { Box, Typography, Card, CardContent } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import { useEffect } from 'react';
 
 const SlideContainer = styled(motion.div)({
   minHeight: '100vh',
@@ -48,18 +47,6 @@ const ItemCard = styled(motion(Card))({
 const TopItemsSlide = () => {
   const navigate = useNavigate();
   const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start({
-      scale: [1, 1.02, 1],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut"
-      }
-    });
-  }, [controls]);
 
   const containerVariants = {
     initial: { opacity: 0 },
