@@ -159,8 +159,8 @@ const StatsSlide = () => {
 
   const hearts = Array.from({ length: 30 }).map((_, i) => ({
     id: i,
-    x: Math.random() * (window.innerWidth - 100) + 50,
-    y: Math.random() * window.innerHeight,
+    x: (Math.random() * window.innerWidth) - (window.innerWidth / 2),
+    y: (Math.random() * window.innerHeight) - (window.innerHeight / 2),
     scale: Math.random() * 0.8 + 0.7,
     duration: Math.random() * 4 + 3,
     delay: Math.random() * 2
