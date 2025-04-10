@@ -3,6 +3,7 @@ import { Box, Typography } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
+import userData from '../../data/userData.json';
 
 const SlideContainer = styled(motion.div)({
   height: '100vh',
@@ -51,11 +52,11 @@ const StatsSlide = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCount((prev) => {
-        if (prev < 1234) {
-          return prev + 17;
+        if (prev < userData.stats.minutesListened) {
+          return prev + Math.ceil(userData.stats.minutesListened / 50);
         }
         clearInterval(timer);
-        return 1234;
+        return userData.stats.minutesListened;
       });
     }, 20);
 
@@ -161,7 +162,7 @@ const StatsSlide = () => {
           animate={controls}
         >
           <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
-            42
+            {userData.stats.differentArtists}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
             Different Artists
@@ -180,7 +181,7 @@ const StatsSlide = () => {
           animate={controls}
         >
           <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
-            156
+            {userData.stats.newSongsDiscovered}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
             New Songs Discovered

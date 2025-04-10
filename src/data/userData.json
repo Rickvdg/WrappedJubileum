@@ -1,0 +1,14 @@
+{
+  "stats": {
+    "minutesListened": 1234,
+    "differentArtists": 42,
+    "newSongsDiscovered": 156
+  },
+  "topArtists": [
+    { "name": "Artist 1", "plays": 245 },
+    { "name": "Artist 2", "plays": 198 },
+    { "name": "Artist 3", "plays": 156 },
+    { "name": "Artist 4", "plays": 134 },
+    { "name": "Artist 5", "plays": 112 }
+  ]
+} 

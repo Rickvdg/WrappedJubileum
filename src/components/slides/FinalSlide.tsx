@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { useEffect } from 'react';
+import userData from '../../data/userData.json';
 
 const SlideContainer = styled(motion.div)({
   height: '100vh',
@@ -179,7 +180,7 @@ const FinalSlide = () => {
         animate="animate"
       >
         <Typography variant="body1" sx={{ mb: 4, opacity: 0.7 }}>
-          From discovering 156 new songs to spending 1,234 minutes with your favorite artists,
+          From discovering {userData.stats.newSongsDiscovered} new songs to spending {userData.stats.minutesListened} minutes with your favorite artists,
           you've created a unique musical journey.
         </Typography>
       </motion.div>

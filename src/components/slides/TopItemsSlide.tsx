@@ -2,6 +2,7 @@ import { Box, Typography, Card, CardContent } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
+import userData from '../../data/userData.json';
 
 const SlideContainer = styled(motion.div)({
   minHeight: '100vh',
@@ -119,14 +120,6 @@ const TopItemsSlide = () => {
     }
   };
 
-  const topArtists = [
-    { name: 'Artist 1', plays: 245 },
-    { name: 'Artist 2', plays: 198 },
-    { name: 'Artist 3', plays: 156 },
-    { name: 'Artist 4', plays: 134 },
-    { name: 'Artist 5', plays: 112 },
-  ];
-
   return (
     <SlideContainer
       variants={containerVariants}
@@ -145,7 +138,7 @@ const TopItemsSlide = () => {
         </Typography>
       </motion.div>
 
-      {topArtists.map((artist, index) => (
+      {userData.topArtists.map((artist, index) => (
         <ItemCard
           key={artist.name}
           custom={index}
