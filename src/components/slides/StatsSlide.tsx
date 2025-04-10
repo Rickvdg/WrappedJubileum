@@ -4,44 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import userData from '../../data/userData.json';
-import FloatingHearts from '../common/FloatingHearts';
-
-const SlideContainer = styled(motion.div)({
-  height: '100vh',
-  width: '100vw',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#FFF5F7',
-  color: '#2C3E50',
-  cursor: 'pointer',
-  padding: '2rem',
-  position: 'relative',
-  overflow: 'hidden',
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: 'linear-gradient(0deg, rgba(255, 105, 180, 0.1), rgba(255, 182, 193, 0.1))',
-    animation: 'gradient 15s ease infinite',
-    zIndex: 0,
-  },
-  '@keyframes gradient': {
-    '0%': {
-      backgroundPosition: '0% 50%',
-    },
-    '50%': {
-      backgroundPosition: '100% 50%',
-    },
-    '100%': {
-      backgroundPosition: '0% 50%',
-    },
-  },
-});
+import BaseSlide from '../common/BaseSlide';
 
 const StatBox = styled(motion.div)({
   marginBottom: '2rem',
@@ -99,24 +62,6 @@ const StatsSlide = () => {
     });
   }, [controls]);
 
-  const containerVariants = {
-    initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    },
-    exit: { 
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeIn"
-      }
-    }
-  };
-
   const statVariants = {
     initial: { 
       scale: 0.8, 
@@ -139,7 +84,7 @@ const StatsSlide = () => {
     }),
     hover: {
       scale: 1.05,
-      rotate: 2,
+      rotate: 1,
       transition: {
         type: "spring",
         stiffness: 400,
@@ -149,15 +94,7 @@ const StatsSlide = () => {
   };
 
   return (
-    <SlideContainer
-      variants={containerVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      onClick={() => navigate('/top-items')}
-    >
-      <FloatingHearts count={30} />
-
+    <BaseSlide onClick={() => navigate('/top-items')} heartCount={30}>
       <StatBox
         variants={statVariants}
         custom={0}
@@ -224,7 +161,7 @@ const StatsSlide = () => {
           Tap to continue
         </Typography>
       </motion.div>
-    </SlideContainer>
+    </BaseSlide>
   );
 };
 

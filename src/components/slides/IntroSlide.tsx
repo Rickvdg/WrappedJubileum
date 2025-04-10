@@ -3,21 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { useEffect } from 'react';
-import FloatingHearts from '../common/FloatingHearts';
-
-const SlideContainer = styled(motion.div)({
-  height: '100vh',
-  width: '100vw',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#FFF5F7',
-  color: '#2C3E50',
-  cursor: 'pointer',
-  overflow: 'hidden',
-  position: 'relative',
-});
+import BaseSlide from '../common/BaseSlide';
 
 const GradientText = styled(Typography)({
   background: 'linear-gradient(45deg, #FF69B4, #FFB6C1)',
@@ -47,24 +33,6 @@ const IntroSlide = () => {
       }
     });
   }, [controls]);
-
-  const containerVariants = {
-    initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: "easeOut"
-      }
-    },
-    exit: { 
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeIn"
-      }
-    }
-  };
 
   const textVariants = {
     initial: { 
@@ -111,15 +79,7 @@ const IntroSlide = () => {
   };
 
   return (
-    <SlideContainer
-      variants={containerVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      onClick={() => navigate('/stats')}
-    >
-      <FloatingHearts count={20} />
-
+    <BaseSlide onClick={() => navigate('/stats')} heartCount={20}>
       <motion.div 
         variants={textVariants}
         animate={controls}
@@ -133,7 +93,7 @@ const IntroSlide = () => {
           Click anywhere to begin your journey
         </Typography>
       </motion.div>
-    </SlideContainer>
+    </BaseSlide>
   );
 };
 

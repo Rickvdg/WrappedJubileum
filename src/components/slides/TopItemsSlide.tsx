@@ -3,21 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import userData from '../../data/userData.json';
-import FloatingHearts from '../common/FloatingHearts';
-
-const SlideContainer = styled(motion.div)({
-  minHeight: '100vh',
-  width: '100vw',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  backgroundColor: '#FFF5F7',
-  color: '#2C3E50',
-  padding: '2rem',
-  cursor: 'pointer',
-  position: 'relative',
-  overflow: 'hidden',
-});
+import BaseSlide from '../common/BaseSlide';
 
 const ItemCard = styled(motion(Card))({
   width: '100%',
@@ -49,24 +35,6 @@ const ItemCard = styled(motion(Card))({
 const TopItemsSlide = () => {
   const navigate = useNavigate();
   const controls = useAnimation();
-
-  const containerVariants = {
-    initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    },
-    exit: { 
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeIn"
-      }
-    }
-  };
 
   const titleVariants = {
     initial: { 
@@ -122,15 +90,7 @@ const TopItemsSlide = () => {
   };
 
   return (
-    <SlideContainer
-      variants={containerVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      onClick={() => navigate('/final')}
-    >
-      <FloatingHearts count={25} />
-
+    <BaseSlide onClick={() => navigate('/final')} heartCount={25}>
       <motion.div
         variants={titleVariants}
         initial="initial"
@@ -176,7 +136,7 @@ const TopItemsSlide = () => {
           Tap to see your final summary
         </Typography>
       </motion.div>
-    </SlideContainer>
+    </BaseSlide>
   );
 };
 
