@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import userData from '../../data/userData.json';
 import FloatingHearts from '../common/FloatingHearts';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const SlideContainer = styled(motion.div)({
   height: '100vh',
@@ -42,15 +41,6 @@ const SlideContainer = styled(motion.div)({
       backgroundPosition: '0% 50%',
     },
   },
-});
-
-const Heart = styled(motion(FavoriteIcon))({
-  position: 'absolute',
-  color: '#FF69B4',
-  opacity: 0.3,
-  zIndex: 0,
-  fontSize: '2rem',
-  transform: 'rotate(180deg)',
 });
 
 const StatBox = styled(motion.div)({
@@ -157,15 +147,6 @@ const StatsSlide = () => {
       }
     }
   };
-
-  const hearts = Array.from({ length: 30 }).map((_, i) => ({
-    id: i,
-    x: (Math.random() * window.innerWidth) - (window.innerWidth / 2),
-    y: (Math.random() * window.innerHeight) - (window.innerHeight / 2),
-    scale: Math.random() * 0.8 + 0.7,
-    duration: Math.random() * 4 + 3,
-    delay: Math.random() * 2
-  }));
 
   return (
     <SlideContainer

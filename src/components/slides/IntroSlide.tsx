@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
@@ -17,15 +17,6 @@ const SlideContainer = styled(motion.div)({
   cursor: 'pointer',
   overflow: 'hidden',
   position: 'relative',
-});
-
-const Particle = styled(motion.div)({
-  position: 'absolute',
-  width: '4px',
-  height: '4px',
-  borderRadius: '50%',
-  backgroundColor: '#FF69B4',
-  opacity: 0.6,
 });
 
 const GradientText = styled(Typography)({
@@ -118,14 +109,6 @@ const IntroSlide = () => {
       }
     }
   };
-
-  const particles = Array.from({ length: 20 }).map((_, i) => ({
-    id: i,
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    scale: Math.random() * 0.5 + 0.5,
-    duration: Math.random() * 2 + 2
-  }));
 
   return (
     <SlideContainer
