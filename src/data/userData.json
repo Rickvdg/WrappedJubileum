@@ -2,7 +2,10 @@
   "stats": {
     "minutesListened": 1234,
     "differentArtists": 42,
-    "newSongsDiscovered": 156
+    "newSongsDiscovered": 156,
+    "tiktoksSent": 1234,
+    "stickersSent": 42,
+    "loveYousSent": 156
   },
   "topArtists": [
     { "name": "Artist 1", "plays": 245 },

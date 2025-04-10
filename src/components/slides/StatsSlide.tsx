@@ -52,11 +52,11 @@ const StatsSlide = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCount((prev) => {
-        if (prev < userData.stats.minutesListened) {
-          return prev + Math.ceil(userData.stats.minutesListened / 50);
+        if (prev < userData.stats.tiktoksSent) {
+          return prev + Math.ceil(userData.stats.tiktoksSent / 50);
         }
         clearInterval(timer);
-        return userData.stats.minutesListened;
+        return userData.stats.tiktoksSent;
       });
     }, 20);
 
@@ -146,7 +146,7 @@ const StatsSlide = () => {
             {Math.floor(count)}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            Minutes Listened
+            Tiktoks Sent
           </Typography>
         </motion.div>
       </StatBox>
@@ -162,10 +162,10 @@ const StatsSlide = () => {
           animate={controls}
         >
           <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
-            {userData.stats.differentArtists}
+            {userData.stats.stickersSent}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            Different Artists
+            Stickers Sent
           </Typography>
         </motion.div>
       </StatBox>
@@ -181,10 +181,10 @@ const StatsSlide = () => {
           animate={controls}
         >
           <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
-            {userData.stats.newSongsDiscovered}
+            {userData.stats.loveYousSent}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            New Songs Discovered
+            I Love Yous Sent
           </Typography>
         </motion.div>
       </StatBox>
