@@ -3,6 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { useEffect } from 'react';
+import FloatingHearts from '../common/FloatingHearts';
 
 const SlideContainer = styled(motion.div)({
   height: '100vh',
@@ -134,25 +135,8 @@ const IntroSlide = () => {
       exit="exit"
       onClick={() => navigate('/stats')}
     >
-      {particles.map((particle) => (
-        <Particle
-          key={particle.id}
-          initial={{ 
-            x: particle.x,
-            y: particle.y,
-            scale: 0
-          }}
-          animate={{ 
-            scale: [0, particle.scale, 0],
-            opacity: [0, 0.6, 0]
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      ))}
+      <FloatingHearts count={20} />
+
       <motion.div 
         variants={textVariants}
         animate={controls}

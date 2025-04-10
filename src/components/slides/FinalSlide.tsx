@@ -5,6 +5,7 @@ import { styled } from '@mui/material/styles';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { useEffect } from 'react';
 import userData from '../../data/userData.json';
+import FloatingHearts from '../common/FloatingHearts';
 
 const SlideContainer = styled(motion.div)({
   height: '100vh',
@@ -151,6 +152,8 @@ const FinalSlide = () => {
       animate="animate"
       exit="exit"
     >
+      <FloatingHearts count={35} />
+
       <motion.div 
         custom={0} 
         variants={textVariants} 

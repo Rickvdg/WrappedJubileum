@@ -3,6 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import userData from '../../data/userData.json';
+import FloatingHearts from '../common/FloatingHearts';
 
 const SlideContainer = styled(motion.div)({
   minHeight: '100vh',
@@ -128,6 +129,8 @@ const TopItemsSlide = () => {
       exit="exit"
       onClick={() => navigate('/final')}
     >
+      <FloatingHearts count={25} />
+
       <motion.div
         variants={titleVariants}
         initial="initial"

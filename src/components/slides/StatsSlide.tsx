@@ -4,6 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import userData from '../../data/userData.json';
+import FloatingHearts from '../common/FloatingHearts';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const SlideContainer = styled(motion.div)({
@@ -174,29 +175,7 @@ const StatsSlide = () => {
       exit="exit"
       onClick={() => navigate('/top-items')}
     >
-      {hearts.map((heart) => (
-        <Heart
-          key={heart.id}
-          initial={{ 
-            x: heart.x,
-            y: heart.y,
-            scale: 0,
-            rotate: Math.random() * 360
-          }}
-          animate={{ 
-            y: [heart.y, heart.y - 150, heart.y],
-            scale: [0, heart.scale, 0],
-            rotate: [180, 0, -180],
-            opacity: [0, 0.4, 0]
-          }}
-          transition={{
-            duration: heart.duration,
-            delay: heart.delay,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      ))}
+      <FloatingHearts count={30} />
 
       <StatBox
         variants={statVariants}
