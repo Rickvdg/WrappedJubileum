@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 
 const MUSIC_FILES = {
   '/': '/music/Shop Till You Play.mp3',
-  '/stats': '/music/stats.mp3',
-  '/top-items': '/music/top-items.mp3',
+  '/stats': '/music/Blondie and the Gamer.mp3',
+  '/top-items': '/music/Kinderen van de Camera.mp3',
   '/final': '/music/final.mp3',
 };
 
