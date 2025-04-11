@@ -1,7 +1,11 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
+import { IconButton } from '@mui/material';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import FloatingHearts from './FloatingHearts';
+import { useBackgroundMusic } from '../../hooks/useBackgroundMusic';
 
 const SlideContainer = styled(motion.div)({
   height: '100vh',
@@ -12,8 +16,8 @@ const SlideContainer = styled(motion.div)({
   alignItems: 'center',
   backgroundColor: '#FFF5F7',
   color: '#2C3E50',
-  cursor: 'pointer',
   padding: '2rem',
+  cursor: 'pointer',
   position: 'relative',
   overflow: 'hidden',
   '&::before': {
@@ -40,6 +44,18 @@ const SlideContainer = styled(motion.div)({
   },
 });
 
+const MusicButton = styled(IconButton)({
+  position: 'absolute',
+  top: '1rem',
+  right: '1rem',
+  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+  backdropFilter: 'blur(10px)',
+  '&:hover': {
+    backgroundColor: 'rgba(255, 255, 255, 1)',
+  },
+  zIndex: 10,
+});
+
 interface BaseSlideProps {
   children: ReactNode;
   onClick?: () => void;
@@ -64,7 +80,23 @@ const containerVariants = {
   }
 };
 
-const BaseSlide = ({ children, onClick, heartCount = 30 }: BaseSlideProps) => {
+const BaseSlide = ({ children, onClick, heartCount = 20 }: BaseSlideProps) => {
+  const [isMuted, setIsMuted] = useState(true);
+  const audioRef = useBackgroundMusic();
+
+  const handleMusicToggle = () => {
+    if (audioRef.current) {
+      if (isMuted) {
+        audioRef.current.play().catch(error => {
+          console.warn('Playback failed:', error);
+        });
+      } else {
+        audioRef.current.pause();
+      }
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <SlideContainer
       variants={containerVariants}
@@ -73,6 +105,15 @@ const BaseSlide = ({ children, onClick, heartCount = 30 }: BaseSlideProps) => {
       exit="exit"
       onClick={onClick}
     >
+      <MusicButton 
+        onClick={(e) => {
+          e.stopPropagation();
+          handleMusicToggle();
+        }}
+        aria-label={isMuted ? "unmute music" : "mute music"}
+      >
+        {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
+      </MusicButton>
       <FloatingHearts count={heartCount} />
       {children}
     </SlideContainer>
