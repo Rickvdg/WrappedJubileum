@@ -37,15 +37,21 @@ const StatsSlide = () => {
   const controls = useAnimation();
 
   useEffect(() => {
+    const target = userData.stats.tiktoksSent;
+    const duration = 1500;
+    const steps = 20;
+    const stepSize = target / steps;
+    const interval = duration / steps;
+
     const timer = setInterval(() => {
       setCount((prev) => {
-        if (prev < userData.stats.tiktoksSent) {
-          return prev + Math.ceil(userData.stats.tiktoksSent / 50);
+        if (prev < target) {
+          return Math.min(prev + stepSize, target);
         }
         clearInterval(timer);
-        return userData.stats.tiktoksSent;
+        return target;
       });
-    }, 20);
+    }, interval);
 
     return () => clearInterval(timer);
   }, []);
@@ -95,9 +101,7 @@ const StatsSlide = () => {
 
   return (
     <BaseSlide onClick={() => navigate('/top-items')} heartCount={30}>
-      <Typography variant="h3" sx={{ mb: 4, color: '#FF69B4', fontWeight: 'bold' }}>
-        TikTok Stats
-      </Typography>
+      
       <StatBox
         variants={statVariants}
         custom={0}

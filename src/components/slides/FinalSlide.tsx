@@ -183,7 +183,7 @@ const FinalSlide = () => {
         animate="animate"
       >
         <Typography variant="body1" sx={{ mb: 4, opacity: 0.7 }}>
-          Van het wisselen van {userData.stats.tiktoksSent} verschillende tiktoks en het sturen van {userData.stats.amountOfMessagesPerDay} berichten naar elkaar,
+          Van het wisselen van {userData.stats.tiktoksSent} verschillende tiktoks en het sturen van {userData.stats.averageMessagesPerDay} berichten per dag naar elkaar,
           hebben we een unieke liefdesreis gemaakt.
         </Typography>
       </motion.div>
