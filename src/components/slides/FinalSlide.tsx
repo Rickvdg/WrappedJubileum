@@ -172,7 +172,7 @@ const FinalSlide = () => {
         animate="animate"
       >
         <Typography variant="h5" sx={{ mb: 2, opacity: 0.9 }}>
-          You've had an amazing year in music
+          You've had an amazing year in love
         </Typography>
       </motion.div>
 
@@ -183,8 +183,8 @@ const FinalSlide = () => {
         animate="animate"
       >
         <Typography variant="body1" sx={{ mb: 4, opacity: 0.7 }}>
-          From discovering {userData.stats.newSongsDiscovered} new songs to spending {userData.stats.minutesListened} minutes with your favorite artists,
-          you've created a unique musical journey.
+          Van het wisselen van {userData.stats.tiktoksSent} verschillende tiktoks en het sturen van {userData.stats.amountOfMessagesPerDay} berichten naar elkaar,
+          hebben we een unieke liefdesreis gemaakt.
         </Typography>
       </motion.div>
 
@@ -195,7 +195,7 @@ const FinalSlide = () => {
         animate="animate"
       >
         <Typography variant="h6" sx={{ color: '#FF69B4', mb: 3 }}>
-          Thanks for being part of the music!
+          Bedankt voor het deelnemen aan de liefdesreis!
         </Typography>
       </motion.div>
 
@@ -208,7 +208,7 @@ const FinalSlide = () => {
         startIcon={<ReplayIcon />}
         onClick={() => navigate('/')}
       >
-        Start Over
+        Naar het begin
       </StyledButton>
     </SlideContainer>
   );

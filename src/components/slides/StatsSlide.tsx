@@ -147,10 +147,10 @@ const StatsSlide = () => {
           animate={controls}
         >
           <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
-            {userData.stats.tiktoksUniqueDays}
+            {userData.stats.amountOfMessages}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            Aantal unieke dagen
+            berichten het afgelopen jaar
           </Typography>
         </motion.div>
       </StatBox>

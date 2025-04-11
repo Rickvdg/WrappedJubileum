@@ -1,11 +1,10 @@
 {
   "stats": {
-    "minutesListened": 1234,
-    "differentArtists": 42,
-    "newSongsDiscovered": 156,
     "tiktoksSent": 1182,
     "tiktoksAveragePerDay": 4.38,
-    "tiktoksUniqueDays": 270
+    "tiktoksUniqueDays": 270,
+    "amountOfMessages": 31609,
+    "amountOfMessagesPerDay": 9999
   },
   "topArtists": [
     { "name": "ik hou van jou(uuu)", "plays": 421 },
