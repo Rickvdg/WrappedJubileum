@@ -82,17 +82,14 @@ const containerVariants = {
 
 const BaseSlide = ({ children, onClick, heartCount = 20 }: BaseSlideProps) => {
   const [isMuted, setIsMuted] = useState(() => {
-    // Initialize state from localStorage, default to true if not set
+    // Check localStorage for saved state, default to true if not set
     const savedState = localStorage.getItem('audioMuted');
     return savedState ? JSON.parse(savedState) : true;
   });
   const audioRef = useBackgroundMusic();
 
   useEffect(() => {
-    // Save state to localStorage whenever it changes
-    localStorage.setItem('audioMuted', JSON.stringify(isMuted));
-    
-    // Handle initial audio state
+    // Handle audio state changes
     if (audioRef.current) {
       if (!isMuted) {
         audioRef.current.play().catch(error => {
@@ -105,7 +102,9 @@ const BaseSlide = ({ children, onClick, heartCount = 20 }: BaseSlideProps) => {
   }, [isMuted, audioRef]);
 
   const handleMusicToggle = () => {
-    setIsMuted(!isMuted);
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+    localStorage.setItem('audioMuted', JSON.stringify(newMutedState));
   };
 
   return (

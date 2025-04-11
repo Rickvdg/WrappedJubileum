@@ -23,11 +23,10 @@ export const useBackgroundMusic = () => {
     const musicFile = MUSIC_FILES[location.pathname as keyof typeof MUSIC_FILES];
     
     if (musicFile) {
-      // Update the source and play
+      // Update the source but don't autoplay
       audioRef.current.src = musicFile;
-      audioRef.current.play().catch(error => {
-        console.warn('Autoplay prevented:', error);
-      });
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     }
 
     // Cleanup function
