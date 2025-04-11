@@ -1,11 +1,14 @@
-import { Typography, Button } from '@mui/material';
+import { Typography, Button, IconButton } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import ReplayIcon from '@mui/icons-material/Replay';
-import { useEffect } from 'react';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import { useEffect, useState } from 'react';
 import userData from '../../data/userData.json';
 import FloatingHearts from '../common/FloatingHearts';
+import { useBackgroundMusic } from '../../hooks/useBackgroundMusic';
 
 const SlideContainer = styled(motion.div)({
   height: '100vh',
@@ -58,9 +61,26 @@ const StyledButton = styled(motion(Button))({
   },
 });
 
+const MusicButton = styled(IconButton)({
+  position: 'absolute',
+  top: '1rem',
+  right: '1rem',
+  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+  backdropFilter: 'blur(10px)',
+  '&:hover': {
+    backgroundColor: 'rgba(255, 255, 255, 1)',
+  },
+  zIndex: 10,
+});
+
 const FinalSlide = () => {
   const navigate = useNavigate();
   const controls = useAnimation();
+  const [isMuted, setIsMuted] = useState(() => {
+    const savedState = localStorage.getItem('audioMuted');
+    return savedState ? JSON.parse(savedState) : true;
+  });
+  const audioRef = useBackgroundMusic();
 
   useEffect(() => {
     controls.start({
@@ -73,6 +93,23 @@ const FinalSlide = () => {
       }
     });
   }, [controls]);
+
+  useEffect(() => {
+    localStorage.setItem('audioMuted', JSON.stringify(isMuted));
+    if (audioRef.current) {
+      if (!isMuted) {
+        audioRef.current.play().catch(error => {
+          console.warn('Playback failed:', error);
+        });
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isMuted, audioRef]);
+
+  const handleMusicToggle = () => {
+    setIsMuted(!isMuted);
+  };
 
   const containerVariants = {
     initial: { opacity: 0 },
@@ -152,6 +189,16 @@ const FinalSlide = () => {
       animate="animate"
       exit="exit"
     >
+      <MusicButton 
+        onClick={(e) => {
+          e.stopPropagation();
+          handleMusicToggle();
+        }}
+        aria-label={isMuted ? "unmute music" : "mute music"}
+      >
+        {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
+      </MusicButton>
+
       <FloatingHearts count={35} />
 
       <motion.div 
