@@ -52,25 +52,14 @@ const DayCell = styled(motion.div)<{ intensity: number }>(({ intensity }) => ({
   width: '100%',
   aspectRatio: '1',
   borderRadius: '4px',
-  backgroundColor: `rgba(255, 105, 180, ${0.1 + intensity * 0.9})`,
+  backgroundColor: `rgba(255, 105, 180, ${Math.min(0.1 + intensity * 0.9, 1)})`,
   cursor: 'pointer',
   position: 'relative',
   minHeight: '24px',
   '&:hover': {
     transform: 'scale(1.2)',
     zIndex: 1,
-  },
-  '&::after': {
-    content: 'attr(data-count)',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    fontSize: '0.7rem',
-    color: '#2C3E50',
-    opacity: intensity > 0.5 ? 1 : 0,
-    transition: 'opacity 0.2s ease',
-  },
+  }
 }));
 
 const ScrollableContent = styled(Box)({
@@ -248,7 +237,6 @@ const HeatmapSlide = () => {
                       initial="initial"
                       animate="animate"
                       whileHover="hover"
-                      data-count={monthData[day]}
                     />
                   ))}
                 </DaysGrid>
