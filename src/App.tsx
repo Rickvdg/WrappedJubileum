@@ -5,6 +5,7 @@ import IntroSlide from './components/slides/IntroSlide';
 import StatsSlide from './components/slides/StatsSlide';
 import TopItemsSlide from './components/slides/TopItemsSlide';
 import FinalSlide from './components/slides/FinalSlide';
+import HeatmapSlide from './components/slides/HeatmapSlide';
 
 const theme = createTheme({
   palette: {
@@ -46,6 +47,7 @@ function App() {
             <Route path="/" element={<IntroSlide />} />
             <Route path="/stats" element={<StatsSlide />} />
             <Route path="/top-items" element={<TopItemsSlide />} />
+            <Route path="/heatmap" element={<HeatmapSlide />} />
             <Route path="/final" element={<FinalSlide />} />
           </Routes>
         </AnimatePresence>

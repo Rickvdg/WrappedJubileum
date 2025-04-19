@@ -52,3 +52,26 @@ export default tseslint.config({
   },
 })
 ```
+
+## Getting Started
+
+To get started with this project, follow these steps:
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Start the development server:
+```bash
+npm run dev
+```
+
+The development server will start and you can view the application at `http://localhost:5173` in your browser.
+
+### Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the project for production
+- `npm run preview` - Preview the production build locally
+- `npm run lint` - Run ESLint to check for code issues
