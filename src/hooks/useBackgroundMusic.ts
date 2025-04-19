@@ -5,6 +5,8 @@ const MUSIC_FILES = {
   '/': '/music/Shop Till You Play.mp3',
   '/stats': '/music/Blondie and the Gamer.mp3',
   '/top-items': '/music/Kinderen van de Camera.mp3',
+  '/heatmap': '/music/Ronde knuffellegende.mp3',
+  '/message-count': '/music/Dansen onder de zon.mp3',
   '/final': '/music/Kaassoufle Lovin.mp3',
 };
 
