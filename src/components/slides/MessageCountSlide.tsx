@@ -39,12 +39,25 @@ const CountNumber = styled(Typography)({
 
 const CrownIcon = styled(EmojiEventsIcon)({
   position: 'absolute',
-  top: '-1.5rem',
+  top: '-2rem',
   left: '50%',
   transform: 'translateX(-50%)',
-  fontSize: '3rem',
+  fontSize: '3.5rem',
   color: '#FFD700',
-  filter: 'drop-shadow(0 0 5px rgba(255, 215, 0, 0.5))',
+  filter: 'drop-shadow(0 0 8px rgba(0, 0, 0, 0.3))',
+  zIndex: 2,
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '120%',
+    height: '120%',
+    background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)',
+    borderRadius: '50%',
+    zIndex: -1,
+  }
 });
 
 const MessageCountSlide = () => {
