@@ -90,7 +90,7 @@ const TopItemsSlide = () => {
   };
 
   return (
-    <BaseSlide onClick={() => navigate('/heatmap')} heartCount={25}>
+    <BaseSlide onClick={() => navigate('/message-count')} heartCount={25}>
       <motion.div
         variants={titleVariants}
         initial="initial"
