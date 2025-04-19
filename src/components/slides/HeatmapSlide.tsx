@@ -3,10 +3,11 @@ import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import BaseSlide from '../common/BaseSlide';
+import userData from '../../data/userData.json';
 
 const MonthsContainer = styled(Box)({
   display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
+  gridTemplateColumns: 'repeat(3, 1fr)',
   gap: '2rem',
   width: '100%',
   maxWidth: '1400px',
@@ -94,32 +95,67 @@ const ScrollableContent = styled(Box)({
 
 const weekDays = ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'];
 const months = [
-  'Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni',
-  'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'
+  'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober',
+  'November', 'December', 'Januari', 'Februari', 'Maart', 'April'
 ];
 
 const getFirstDayOfMonth = (month: number) => {
   // Get the first day of the month (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
-  const firstDay = new Date(2024, month, 1).getDay();
+  const year = month < 8 ? 2024 : 2025; // 2024 for May-Dec, 2025 for Jan-Apr
+  const actualMonth = month < 8 ? month + 5 : month - 7; // Convert to actual month number
+  const firstDay = new Date(year, actualMonth - 1, 1).getDay(); // Month is 0-based in Date
   // Convert to Monday-based index (0 = Monday, 1 = Tuesday, ..., 6 = Sunday)
   return firstDay === 0 ? 6 : firstDay - 1;
 };
 
 const daysInMonth = (month: number) => {
-  // 2024 is a leap year
-  const days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  // 2024 is a leap year, 2025 is not
+  const year = month < 8 ? 2024 : 2025;
+  const days = [
+    31, // May
+    30, // June
+    31, // July
+    31, // August
+    30, // September
+    31, // October
+    30, // November
+    31, // December
+    31, // January
+    year === 2024 ? 29 : 28, // February (leap year check)
+    31, // March
+    30  // April
+  ];
   return days[month];
 };
 
+interface MessageActivity {
+  [year: string]: {
+    [month: string]: number[];
+  };
+}
+
 const HeatmapSlide = () => {
   const navigate = useNavigate();
-  const controls = useAnimation();
 
-  // Generate data for all months
+  // Get message activity data for both years
+  const messageActivity2024 = (userData.messageActivity as MessageActivity)['2024'];
+  const messageActivity2025 = (userData.messageActivity as MessageActivity)['2025'];
+
+  // Calculate the maximum number of messages in any day for normalization
+  const maxMessages = Math.max(
+    ...Object.values(messageActivity2024).flat(),
+    ...Object.values(messageActivity2025).flat()
+  );
+
+  // Generate normalized heatmap data
   const generateHeatmapData = () => {
     return months.map((_, monthIndex) => {
-      const days = daysInMonth(monthIndex);
-      return Array.from({ length: days }, () => Math.random());
+      const year = monthIndex < 8 ? '2024' : '2025';
+      const actualMonth = monthIndex < 8 ? monthIndex + 5 : monthIndex - 7;
+      const monthData = year === '2024' 
+        ? messageActivity2024[actualMonth.toString()]
+        : messageActivity2025[actualMonth.toString()];
+      return monthData.slice(0, daysInMonth(monthIndex)).map((count: number) => count / maxMessages);
     });
   };
 
@@ -188,6 +224,7 @@ const HeatmapSlide = () => {
         <MonthsContainer>
           {months.map((month, monthIndex) => {
             const firstDay = getFirstDayOfMonth(monthIndex);
+            const monthData = heatmapData[monthIndex];
             return (
               <MonthContainer key={month}>
                 <MonthTitle>{month}</MonthTitle>
@@ -202,7 +239,7 @@ const HeatmapSlide = () => {
                     <Box key={`empty-${index}`} />
                   ))}
                   {/* Add the actual days of the month */}
-                  {heatmapData[monthIndex].map((intensity, day) => (
+                  {monthData.map((intensity: number, day: number) => (
                     <DayCell
                       key={day}
                       intensity={intensity}
@@ -211,7 +248,7 @@ const HeatmapSlide = () => {
                       initial="initial"
                       animate="animate"
                       whileHover="hover"
-                      data-count={Math.floor(intensity * 100)}
+                      data-count={monthData[day]}
                     />
                   ))}
                 </DaysGrid>

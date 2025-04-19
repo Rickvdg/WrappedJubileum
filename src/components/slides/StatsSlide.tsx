@@ -132,10 +132,10 @@ const StatsSlide = () => {
           animate={controls}
         >
           <Typography variant="h2" sx={{ color: '#FF69B4', fontWeight: 'bold' }}>
-            {userData.stats.tiktoksAveragePerDay}
+            {userData.stats.longestStreak}
           </Typography>
           <Typography variant="h5" sx={{ opacity: 0.8 }}>
-            Gemiddeld aantal tiktoks per dag
+            Langste dagelijkse reeks
           </Typography>
         </motion.div>
       </StatBox>
