@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import BaseSlide from '../common/BaseSlide';
