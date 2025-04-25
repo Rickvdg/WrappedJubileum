@@ -105,7 +105,7 @@ const MessageCountSlide = () => {
         >
           <MessageCount>
             {userWon && <CrownIcon />}
-            <Typography variant="h5">Jij</Typography>
+            <Typography variant="h5">Rick</Typography>
             <CountNumber>{userMessages.toLocaleString()}</CountNumber>
             <Typography variant="body1" sx={{ opacity: 0.7 }}>
               {userPercentage.toFixed(1)}% van alle berichten
@@ -120,7 +120,7 @@ const MessageCountSlide = () => {
         >
           <MessageCount>
             {!userWon && <CrownIcon />}
-            <Typography variant="h5">Partner</Typography>
+            <Typography variant="h5">Evi</Typography>
             <CountNumber>{partnerMessages.toLocaleString()}</CountNumber>
             <Typography variant="body1" sx={{ opacity: 0.7 }}>
               {partnerPercentage.toFixed(1)}% van alle berichten
